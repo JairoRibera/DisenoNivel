@@ -39,4 +39,12 @@ public class LeverCodeManager : MonoBehaviour
             puerta.SetActive(false);
         }
     }
+    public void DesactivarPalancas()
+    {
+        foreach (var palanca in palancas)
+        {
+            palanca.desactivar();
+
+        }
+    }
 }

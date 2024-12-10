@@ -5,7 +5,9 @@ using UnityEngine;
 public class Lever : MonoBehaviour
 {
     private Animator animPalanca;
-    public Lever[] palancas = new Lever[4];
+    public List<Lever> palancas;
+    public List<Lever> palancasdesactivar;
+
     public bool isActive;
     public bool canInteract;
     private LeverCodeManager _pCM;
