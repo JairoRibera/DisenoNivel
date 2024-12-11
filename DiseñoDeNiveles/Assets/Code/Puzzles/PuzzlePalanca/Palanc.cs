@@ -20,11 +20,23 @@ public class Palanc : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E) && canActivate)
         {
             Debug.Log("Que passa " + gameObject.name, gameObject);
-            Activate();
-            foreach (Palanc pal in palancs)
+            if(active == true)
             {
-                pal.Deactivate();
+                Deactivate();
+                foreach (Palanc pal in palancs)
+                {
+                    pal.Deactivate();
+                }
             }
+            else
+            {
+                Activate();
+                foreach (Palanc pal in palancs)
+                {
+                    pal.Activate();
+                }
+            }
+
         }
     }
 

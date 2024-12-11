@@ -5,13 +5,13 @@ using UnityEngine;
 public class LeverCodeManager : MonoBehaviour
 {
     public GameObject puerta;
-    public Lever[] palancas = new Lever[4];
-    private Lever lever;
+    public Palanc[] palancas = new Palanc[4];
+    private Palanc lever;
     public bool estanactivas = false;
     // Start is called before the first frame update
     void Start()
     {
-        lever = GameObject.FindWithTag("Lever").GetComponent<Lever>();
+        lever = GameObject.FindWithTag("Lever").GetComponent<Palanc>();
     }
 
     // Update is called once per frame
@@ -25,7 +25,7 @@ public class LeverCodeManager : MonoBehaviour
         int _correctPalanca = 0;
         foreach (var palanca in palancas)
         {
-            if (palanca.isActive == true)  // Si alguna palanca no está activa
+            if (palanca.active == true)  // Si alguna palanca no está activa
             {
                 //return false;  // No todas las palancas están activas
                 _correctPalanca++;
@@ -43,7 +43,7 @@ public class LeverCodeManager : MonoBehaviour
     {
         foreach (var palanca in palancas)
         {
-            palanca.desactivar();
+            palanca.Deactivate();
 
         }
     }
