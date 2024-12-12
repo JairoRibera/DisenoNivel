@@ -25,7 +25,14 @@ public class Palanc : MonoBehaviour
                 Deactivate();
                 foreach (Palanc pal in palancs)
                 {
-                    pal.Deactivate();
+                    if(pal.active == true)
+                    {
+                        pal.Deactivate();
+                    }
+                    else
+                    {
+                        pal.Activate();
+                    }
                 }
             }
             else
@@ -33,7 +40,14 @@ public class Palanc : MonoBehaviour
                 Activate();
                 foreach (Palanc pal in palancs)
                 {
-                    pal.Activate();
+                    if (pal.active == true)
+                    {
+                        pal.Deactivate();
+                    }
+                    else
+                    {
+                        pal.Activate();
+                    }
                 }
             }
 
