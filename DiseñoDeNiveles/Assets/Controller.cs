@@ -174,7 +174,7 @@ public class Controller : MonoBehaviour
             Debug.Log("No te veo");
 
         }
-        Debug.DrawRay(transform.position, enemydirection.normalized * maxDistance, Color.magenta);
+        //Debug.DrawRay(transform.position, enemydirection.normalized * maxDistance, Color.magenta);
     }
     private void OnDrawGizmos()
     {

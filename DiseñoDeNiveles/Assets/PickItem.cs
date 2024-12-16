@@ -10,14 +10,6 @@ public class PickItem : MonoBehaviour
     public ColorItem currentItem;
     public bool hasItem;
     public float throwForce = 15;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    // Update is called once per frame
     void Update()
     {
         //solo deja recoger el objeto si esta asignado a la variable tempItem
