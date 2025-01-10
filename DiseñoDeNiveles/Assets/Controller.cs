@@ -69,15 +69,15 @@ public class Controller : MonoBehaviour
         float _vertical = Input.GetAxisRaw("Vertical");
         input = new Vector3(_horizontal, 0f, _vertical);
         input = transform.TransformDirection(input);
-        //if (Input.GetKeyDown(KeyCode.Space) && isGrounded == true)
-        //{
-        //    _rb.AddForce(Vector3.up * jumpForce);
-        //    //Cuando saltamos ponemos el doSound en true
-        //    doSound = true;
-        //    //Hacemos una corutina para ponerla en false cuando pase un tiempo
-        //    StartCoroutine(SinSonido());
-        //}
-        //GroundCheck();
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded == true)
+        {
+            _rb.AddForce(Vector3.up * jumpForce);
+            //Cuando saltamos ponemos el doSound en true
+            doSound = true;
+            //Hacemos una corutina para ponerla en false cuando pase un tiempo
+            StartCoroutine(SinSonido());
+        }
+        GroundCheck();
         float _rotMouseX = Input.GetAxisRaw("Mouse X");
 
         //float _rotMouseY = Input.GetAxisRaw("Mouse Y"); para rotar en el eje y hay que hacerlo con la camara
