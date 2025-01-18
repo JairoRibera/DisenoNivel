@@ -53,6 +53,12 @@ public class Controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Mover Jugador Prueba 1
+        //float _horizontal = Input.GetAxisRaw("Horizontal");
+        //float _vertical = Input.GetAxisRaw("Vertical");
+        //input = new Vector3(_horizontal, 0f, _vertical);
+        //input = transform.TransformDirection(input);
+
         if (enemiestatute != null)
         {
             enemyPos = enemiestatute.transform.position;
@@ -65,10 +71,7 @@ public class Controller : MonoBehaviour
         isRun();
         MovePlayer();
         //HandleSpeed();
-        float _horizontal = Input.GetAxisRaw("Horizontal");
-        float _vertical = Input.GetAxisRaw("Vertical");
-        input = new Vector3(_horizontal, 0f, _vertical);
-        input = transform.TransformDirection(input);
+       
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded == true)
         {
             _rb.AddForce(Vector3.up * jumpForce);
@@ -97,11 +100,15 @@ public class Controller : MonoBehaviour
     }
     private void MovePlayer()
     {
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
+        float _horizontal = Input.GetAxisRaw("Horizontal");
+        float _vertical = Input.GetAxisRaw("Vertical");
+        input = new Vector3(_horizontal, 0f, _vertical);
+        input = transform.TransformDirection(input) * moveSpeed;
 
-        Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
-        _rb.MovePosition(transform.position + movement * moveSpeed * Time.deltaTime);
+        //float moveHorizontal = Input.GetAxis("Horizontal");
+        //float moveVertical = Input.GetAxis("Vertical");
+        //Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
+        //_rb.MovePosition(transform.position + movement * Time.deltaTime * moveSpeed);
     }
     private void isRun()
     {
