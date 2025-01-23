@@ -11,7 +11,7 @@ public class ShootFP : MonoBehaviour
     public float bullet = 10;
     void Start()
     {
-
+        bullet = 0;
     }
 
     // Update is called once per frame
