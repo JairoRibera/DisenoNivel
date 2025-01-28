@@ -1,0 +1,96 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: Idiomas Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: Idiomas
+  m_TableCollectionNameGuidString: 6ba32e122aa7a8c48888ecb9f3050b0c
+  m_Entries:
+  - m_Id: 9408237568
+    m_Key: NuevoJuego_Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14202327040
+    m_Key: CargarJuego_Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17188671488
+    m_Key: 'OpcionesJuego_Text
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20548308992
+    m_Key: Salir_Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 151544811520
+    m_Key: Game_Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 196201566208
+    m_Key: Sonido_Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 241365831680
+    m_Key: "Gr\xE1ficos_Text"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 265827012608
+    m_Key: Music_Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 297770831872
+    m_Key: "Resoluci\xF3n_Text"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 317337260032
+    m_Key: 'Pantalla_Text
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 333577605120
+    m_Key: Brillo_Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 362497331200
+    m_Key: Sensibilidad_Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 386052542464
+    m_Key: Controles_Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 405316980736
+    m_Key: Idiomas_Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 425445445632
+    m_Key: SFX
+    m_Metadata:
+      m_Items: []
+  - m_Id: 447528456192
+    m_Key: TheShroudedPath
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 112828130758754352
+  references:
+    version: 2
+    RefIds:
+    - rid: 112828130758754352
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1738066204447
