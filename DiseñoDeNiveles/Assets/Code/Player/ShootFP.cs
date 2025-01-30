@@ -43,7 +43,7 @@ public class ShootFP : MonoBehaviour
                 bullet--;
                 if (_hit.collider.CompareTag("Enemy"))
                 {
-                    _hit.collider.GetComponent<EnemyHealth>().TakeDamage(2);
+                    _hit.collider.GetComponent<EnemyHealth>().TakeDamage(1);
                 }
             }
             Debug.DrawRay(_ray.origin, _ray.direction * shootRange);

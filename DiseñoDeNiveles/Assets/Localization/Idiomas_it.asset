@@ -82,6 +82,18 @@ MonoBehaviour:
     m_Localized: "\rEsci"
     m_Metadata:
       m_Items: []
+  - m_Id: 820324296437760
+    m_Localized: Partenza
+    m_Metadata:
+      m_Items: []
+  - m_Id: 855858595115008
+    m_Localized: Continuare
+    m_Metadata:
+      m_Items: []
+  - m_Id: 856327186952192
+    m_Localized: Mantenere
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -83,6 +83,20 @@ MonoBehaviour:
     m_Key: TheShroudedPath
     m_Metadata:
       m_Items: []
+  - m_Id: 820324296437760
+    m_Key: 'Partida
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 855858595115008
+    m_Key: Continuar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 856327186952192
+    m_Key: Guardar
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

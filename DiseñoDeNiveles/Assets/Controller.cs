@@ -113,12 +113,12 @@ public class Controller : MonoBehaviour
     private void isRun()
     {
         //Si pulsa f la velocidad cambia y la variable doSound es true
-        if (Input.GetKey(KeyCode.F))
+        if (Input.GetKey(KeyCode.LeftShift))
         {
-            moveSpeed = 10f;
+            moveSpeed = 15f;
             doSound = true;
         }
-        if (Input.GetKeyUp(KeyCode.F))
+        if (Input.GetKeyUp(KeyCode.LeftShift))
         {
             moveSpeed = 5f;
             doSound = false;

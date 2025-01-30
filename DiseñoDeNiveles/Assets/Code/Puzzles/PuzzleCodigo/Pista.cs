@@ -11,6 +11,7 @@ public class Pista : MonoBehaviour
         {
             panel.SetActive(true);
         }
+
     }
     private void OnTriggerExit(Collider other)
     {

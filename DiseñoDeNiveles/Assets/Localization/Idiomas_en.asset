@@ -82,6 +82,18 @@ MonoBehaviour:
     m_Localized: Exit
     m_Metadata:
       m_Items: []
+  - m_Id: 820324296437760
+    m_Localized: Game
+    m_Metadata:
+      m_Items: []
+  - m_Id: 855858595115008
+    m_Localized: Continue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 856327186952192
+    m_Localized: Save
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

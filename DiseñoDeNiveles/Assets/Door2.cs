@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Door2 : MonoBehaviour
 {
+    public GameObject panel;
     public GameObject panel3;
     public bool hasKey2 = false;
     public Inventario inventario;
@@ -32,6 +33,7 @@ public class Door2 : MonoBehaviour
         {
             gameObject.SetActive(false);
             Destroy(panel3);
+            panel.SetActive(false);
         }
         else
             Debug.Log("Necesitas una llave");
