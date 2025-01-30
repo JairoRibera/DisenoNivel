@@ -16,7 +16,7 @@ public class ShowGameOver : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Showanim();
+        //Showanim();
     }
     public void Showanim()
     {

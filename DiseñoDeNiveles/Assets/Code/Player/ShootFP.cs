@@ -8,7 +8,8 @@ public class ShootFP : MonoBehaviour
     public float fireRate = 10f;
     private float shootTimer = 0f;
     public bool havebullet;
-    public float bullet = 10;
+    public int bullet = 10;
+    public UIcontroller uiRef;
     void Start()
     {
         bullet = 0;
@@ -42,11 +43,12 @@ public class ShootFP : MonoBehaviour
                 bullet--;
                 if (_hit.collider.CompareTag("Enemy"))
                 {
-                    _hit.collider.GetComponent<EnemyHealth>().TakeDamage(1);
+                    _hit.collider.GetComponent<EnemyHealth>().TakeDamage(2);
                 }
             }
             Debug.DrawRay(_ray.origin, _ray.direction * shootRange);
             shootTimer = 1f / fireRate;
+            uiRef.UpdateGemCount();
         }
 
         if (shootTimer > 0f)

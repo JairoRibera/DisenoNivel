@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ColorPuzzle : MonoBehaviour
 {
+    public GameObject panel1, panel2;
     public ColorArea[] areas;
     public GameObject obstacle;
 
@@ -24,6 +25,8 @@ public class ColorPuzzle : MonoBehaviour
         {
             //si se cumple, se ha completado el puzzle correctamente :)
             obstacle.SetActive(false);
+            Destroy(panel1);
+            Destroy(panel2);
         }
     }
 }

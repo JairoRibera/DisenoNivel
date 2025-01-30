@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
 
+
 public class PuzzleCodigoManager : MonoBehaviour
 {
     public List<int> truelist = new List<int> { 1, 2, 3, 4 };

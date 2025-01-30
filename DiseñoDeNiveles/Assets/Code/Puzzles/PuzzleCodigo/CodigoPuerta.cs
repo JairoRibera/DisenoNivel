@@ -27,6 +27,7 @@ public class CodigoPuerta : MonoBehaviour
             Panel.SetActive(true);
             Cerca = true;
         }
+        
     }
     private void OnTriggerExit(Collider other)
     {
