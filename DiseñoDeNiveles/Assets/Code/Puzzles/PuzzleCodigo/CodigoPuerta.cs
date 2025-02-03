@@ -9,7 +9,7 @@ public class CodigoPuerta : MonoBehaviour
     public GameObject PanelCodigo;
     public PuzzleCodigoManager CM;
     public bool Cerca;
-
+    public Controller CoReference;
     // Update is called once per frame
     void Update()
     {
@@ -17,6 +17,7 @@ public class CodigoPuerta : MonoBehaviour
         {
             PanelCodigo.SetActive(true);
             Panel.SetActive(false);
+            CoReference.canMoveandRotate = false;
         }
     }
     private void OnTriggerEnter(Collider other)
@@ -26,6 +27,8 @@ public class CodigoPuerta : MonoBehaviour
             CM.canPlayCode = true;
             Panel.SetActive(true);
             Cerca = true;
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
         }
         
     }
@@ -36,6 +39,8 @@ public class CodigoPuerta : MonoBehaviour
             CM.canPlayCode = false;
             Panel.SetActive(false);
             Cerca = false;
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
         }
     }
 }

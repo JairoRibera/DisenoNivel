@@ -18,6 +18,7 @@ public class Controller : MonoBehaviour
     public bool isGrounded = true;
     public bool isJump = false;
     public bool isMoving = false;
+    public bool canMoveandRotate = true;
 
     [Header("Ground Checker")]
     public Transform groundCheckCenter;
@@ -53,6 +54,8 @@ public class Controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        Look();
         //Mover Jugador Prueba 1
         //float _horizontal = Input.GetAxisRaw("Horizontal");
         //float _vertical = Input.GetAxisRaw("Vertical");
@@ -68,8 +71,11 @@ public class Controller : MonoBehaviour
         {
             Debug.Log("El objeto no está presente o está desactivado.");
         }
-        isRun();
-        MovePlayer();
+        if(canMoveandRotate == true)
+        {
+            isRun();
+            MovePlayer();
+        }
         //HandleSpeed();
        
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded == true)
@@ -81,16 +87,19 @@ public class Controller : MonoBehaviour
             StartCoroutine(SinSonido());
         }
         GroundCheck();
-        float _rotMouseX = Input.GetAxisRaw("Mouse X");
+        if(canMoveandRotate == true)
+        {
+            float _rotMouseX = Input.GetAxisRaw("Mouse X");
 
-        //float _rotMouseY = Input.GetAxisRaw("Mouse Y"); para rotar en el eje y hay que hacerlo con la camara
-        transform.Rotate(0, _rotMouseX * rotationSpeed * Time.deltaTime, 0);
-        //Se acumula el valor de la rotacion en X de la camara
-        //para que aumente o disminuya conforme movemos el raton arriba y abajo
-        camXRot -= Input.GetAxisRaw("Mouse Y") * rotationSpeed * Time.deltaTime;
-        camXRot = Mathf.Clamp(camXRot, -60, 60);
-        //Asignamos la rotacion en x a los angulos de la camara
-        _camera.transform.localEulerAngles = new Vector3(camXRot, 0, 0);
+            //float _rotMouseY = Input.GetAxisRaw("Mouse Y"); para rotar en el eje y hay que hacerlo con la camara
+            transform.Rotate(0, _rotMouseX * rotationSpeed * Time.deltaTime, 0);
+            //Se acumula el valor de la rotacion en X de la camara
+            //para que aumente o disminuya conforme movemos el raton arriba y abajo
+            camXRot -= Input.GetAxisRaw("Mouse Y") * rotationSpeed * Time.deltaTime;
+            camXRot = Mathf.Clamp(camXRot, -60, 60);
+            //Asignamos la rotacion en x a los angulos de la camara
+            _camera.transform.localEulerAngles = new Vector3(camXRot, 0, 0);
+        }
     }
     private IEnumerator SinSonido()
     {

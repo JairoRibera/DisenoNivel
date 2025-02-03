@@ -39,13 +39,15 @@ public class ShootFP : MonoBehaviour
             Ray _ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, Camera.main.nearClipPlane));
             if (Physics.Raycast(_ray, out RaycastHit _hit, shootRange))
             {
+
                 Debug.Log("He disparado a" + _hit.collider);
-                bullet--;
                 if (_hit.collider.CompareTag("Enemy"))
                 {
-                    _hit.collider.GetComponent<EnemyHealth>().TakeDamage(1);
-                }
+                    _hit.collider.GetComponent<EnemyHealth>().TakeDamage(2);
+                    Debug.Log("Enemigoñlsgjhfas");
+                }   
             }
+            bullet--;
             Debug.DrawRay(_ray.origin, _ray.direction * shootRange);
             shootTimer = 1f / fireRate;
             uiRef.UpdateGemCount();

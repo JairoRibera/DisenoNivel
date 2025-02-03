@@ -43,7 +43,6 @@ GameObject:
   - component: {fileID: 7170203000746636637}
   - component: {fileID: 4287595619994018242}
   - component: {fileID: 54576582179369924}
-  - component: {fileID: 9128517035801829959}
   - component: {fileID: 177628287897061733}
   - component: {fileID: 1397696943434504547}
   m_Layer: 9
@@ -142,33 +141,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &9128517035801829959
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3884752620236379523}
-  serializedVersion: 4
-  m_Mass: 100
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 112
-  m_CollisionDetection: 0
 --- !u!195 &177628287897061733
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -203,4 +175,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13ee50c7c3972014d815411c2faf225f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerCo: {fileID: 0}

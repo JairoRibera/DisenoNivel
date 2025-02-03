@@ -275,7 +275,6 @@ GameObject:
   - component: {fileID: 8768753815706685890}
   - component: {fileID: 1168524010261683320}
   - component: {fileID: 1161673000937576176}
-  - component: {fileID: 3306983608220997514}
   m_Layer: 0
   m_Name: Player_ThirdPerson
   m_TagString: Untagged
@@ -401,26 +400,3 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &3306983608220997514
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7430484989519543013}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eaa77c2d7fc2d874b901bf8934a2a9ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 5
-  rotationSpeed: 300
-  camXRot: 0
-  jumpForce: 800
-  isGrounded: 1
-  cameraPivot: {fileID: 4676236889705003820}
-  groundCheckCenter: {fileID: 3884922302848021616}
-  groundCheckSize: {x: 0.7, y: 0.05, z: 0.7}
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 0
