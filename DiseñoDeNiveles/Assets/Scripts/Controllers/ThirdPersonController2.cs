@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ThirdPersonController2 : MonoBehaviour
 {
+    public Animator miAnim;
     public float moveSpeed = 5f;
     public float rotationSpeed = 500f;
     //la rotacion de la camara en el eje X (parriba pabajo)
@@ -35,8 +36,14 @@ public class ThirdPersonController2 : MonoBehaviour
 
     void Update()
     {
+
         float _horizontal = Input.GetAxisRaw("Horizontal");
         float _vertical = Input.GetAxisRaw("Vertical");
+        //creamos un nuevo Vector2 y le aplicamos un magnitude
+        float HVMagnitud = new Vector2(_horizontal, _vertical).magnitude;
+        miAnim.SetFloat("HV_Magnitud", HVMagnitud);
+
+
         //guardamos el input para usarlo en fixedupdate
         input = new Vector3(_horizontal, 0f, _vertical);
         //para que se mueva en la direccion correcta respecto hacia donde mira,

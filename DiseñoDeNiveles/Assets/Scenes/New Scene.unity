@@ -677,7 +677,7 @@ Transform:
   m_GameObject: {fileID: 965989715}
   serializedVersion: 2
   m_LocalRotation: {x: 0.15060987, y: -0, z: -0, w: 0.98859334}
-  m_LocalPosition: {x: 0, y: 4.43, z: -5.13}
+  m_LocalPosition: {x: 0, y: 3.06, z: -3.58}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1066,6 +1066,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed47df77cc44f8c47af46537526bbb7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  miAnim: {fileID: 1321532927}
   moveSpeed: 5
   rotationSpeed: 500
   camXRot: 0
@@ -1098,10 +1099,15 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.66535187
-  m_Height: 4.6800923
+  m_Radius: 0.49214935
+  m_Height: 2.3239126
   m_Direction: 1
-  m_Center: {x: 0, y: 2.3523252, z: 0}
+  m_Center: {x: 0, y: 1.1343336, z: 0.05}
+--- !u!95 &1321532927 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 83ec6db113c166f4ab26ec9dfe0ac5d9, type: 3}
+  m_PrefabInstance: {fileID: 1453601319}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1453601319
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1170,6 +1176,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 8107cb7f935dcd048800df8e51c69ed2, type: 2}
+    - target: {fileID: 5866666021909216657, guid: 83ec6db113c166f4ab26ec9dfe0ac5d9, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 055be2f34c0d3de48b0570da2144f934, type: 2}
     - target: {fileID: 6432836036759862005, guid: 83ec6db113c166f4ab26ec9dfe0ac5d9, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
