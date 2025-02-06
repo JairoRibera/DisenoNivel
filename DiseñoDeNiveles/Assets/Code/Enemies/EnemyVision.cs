@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class EnemyVision : MonoBehaviour
 {
+    public GameObject HitBox;
     public float moveSpeed = 1;
     private GameObject player;
     public Transform Pos1;
@@ -19,6 +20,7 @@ public class EnemyVision : MonoBehaviour
     private NavMeshAgent agent;
     private Vector3 playerPosition;
     private Vector3 enemiePosition;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -49,6 +51,18 @@ public class EnemyVision : MonoBehaviour
         {
             Debug.Log("No te veo");
         }
+
+    }
+    public void Attack()
+    {
+        HitBox.SetActive(true);
+        StartCoroutine(DeActivateCO());
+
+    }
+    private IEnumerator DeActivateCO()
+    {
+        yield return new WaitForSeconds(0.5f);
+        HitBox.SetActive(false);
     }
     void EnemyCheck()
     {

@@ -36,10 +36,48 @@ public class ThirdPersonController2 : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
+
+        //if (miAnim.GetCurrentAnimatorStateInfo(0).IsName("nombreaccion"))
+        //{
+
+        //}
+        if (miAnim.GetCurrentAnimatorStateInfo(0).IsTag("Locomotion"))
         {
-            miAnim.SetTrigger("Attack");
+            moveSpeed = 5;
+            MoveCharacter();
+            CameraMove();
         }
+        else
+        {
+            moveSpeed = 0;
+            rb.velocity = new Vector3(0, rb.velocity.y, 0);
+        }
+
+            if (Input.GetButtonDown("Fire1"))
+            {
+                miAnim.SetTrigger("Attack");
+            }
+            GroundCheck();
+    }
+    public void CameraMove()
+    {
+        float _rotMouseX = Input.GetAxisRaw("Mouse X"); //Es el X y no el Y porque se cuenta el eje donde esta el mouse en fisico (y se mueve en plano)
+                                                        //Aqui el _rotMouseX va en la Y porque este va referido al juego, y el eje de rotacion entonces es la Y
+        transform.Rotate(0, _rotMouseX * rotationSpeed * Time.deltaTime, 0);
+        //el deltaTime es para que no vaya pasudpoasyjdasm
+
+        //hay que ir acumulando el valor de la rotacion en X de la camara
+        //para que aumente o disminuya conforme movemos el raton arriba y abajo
+        camXRot -= Input.GetAxisRaw("Mouse Y") * rotationSpeed * Time.deltaTime;
+        //mathf clamp acota 2 valores para que no baje ni suba de esos valores
+        camXRot = Mathf.Clamp(camXRot, -60, 60); //el camXRot se pone porque mathf.clamp devuelve un valor, asi que para usar ese valor hay que poner que ese valor sea la rotacion 
+                                                 //asignamos la rotacion en X a los angulos del pivote de la camara. localEulerAngles es para el eje loca, el global es el eulerAngles
+        cameraPivot.localEulerAngles = new Vector3(camXRot, 0, 0);
+
+    }
+    public void MoveCharacter()
+    {
+
         float _horizontal = Input.GetAxisRaw("Horizontal");
         float _vertical = Input.GetAxisRaw("Vertical");
         //creamos un nuevo Vector2 y le aplicamos un magnitude
@@ -52,31 +90,12 @@ public class ThirdPersonController2 : MonoBehaviour
         //para que se mueva en la direccion correcta respecto hacia donde mira,
         //hay que transformar el input para que sea en espacio local y no en espacio global
         input = transform.TransformDirection(input);
-
-        float _rotMouseX = Input.GetAxisRaw("Mouse X"); //Es el X y no el Y porque se cuenta el eje donde esta el mouse en fisico (y se mueve en plano)
-        //Aqui el _rotMouseX va en la Y porque este va referido al juego, y el eje de rotacion entonces es la Y
-        transform.Rotate(0, _rotMouseX * rotationSpeed * Time.deltaTime, 0);
-        //el deltaTime es para que no vaya pasudpoasyjdasm
-
-        //hay que ir acumulando el valor de la rotacion en X de la camara
-        //para que aumente o disminuya conforme movemos el raton arriba y abajo
-        camXRot -= Input.GetAxisRaw("Mouse Y") * rotationSpeed * Time.deltaTime;
-        //mathf clamp acota 2 valores para que no baje ni suba de esos valores
-        camXRot = Mathf.Clamp(camXRot, -60, 60); //el camXRot se pone porque mathf.clamp devuelve un valor, asi que para usar ese valor hay que poner que ese valor sea la rotacion 
-        //asignamos la rotacion en X a los angulos del pivote de la camara. localEulerAngles es para el eje loca, el global es el eulerAngles
-        cameraPivot.localEulerAngles = new Vector3(camXRot, 0, 0);
-
-
         //SALTO
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded == true)
         {
             rb.AddForce(Vector3.up * jumpForce);
         }
-
-        GroundCheck();
     }
-
-
     private void FixedUpdate() //el fixedupdate para fisicas que se ejecutan muchas veces
     {   //.normalized es para que no se mueva mas rapido en diagonal
         Vector3 _velocity = input.normalized * moveSpeed;
@@ -103,6 +122,14 @@ public class ThirdPersonController2 : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "damage")
+        {
+            miAnim.SetTrigger("Hit");
+            //resto vida
+        }
+    }
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.magenta;
