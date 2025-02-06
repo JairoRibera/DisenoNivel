@@ -36,7 +36,10 @@ public class ThirdPersonController2 : MonoBehaviour
 
     void Update()
     {
-
+        if (Input.GetButtonDown("Fire1"))
+        {
+            miAnim.SetTrigger("Attack");
+        }
         float _horizontal = Input.GetAxisRaw("Horizontal");
         float _vertical = Input.GetAxisRaw("Vertical");
         //creamos un nuevo Vector2 y le aplicamos un magnitude
@@ -88,7 +91,7 @@ public class ThirdPersonController2 : MonoBehaviour
         //guardamos en la variable todos los colliders que encuentre el overlap
         //añadimos como ultimo parametro la groundlayer para que solo detecte los objetos que estan en esa capa
         detectedColliders = Physics.OverlapBox(groundCheckCenter.position, groundCheckSize * 0.5f, Quaternion.Euler(0, 0, 0), groundLayer);
-
+        miAnim.SetBool("IsGrounded", isGrounded);
         //cuando el checker detecte al menos un objeto suelo, podemos saltar
         if (detectedColliders.Length > 0)
         {

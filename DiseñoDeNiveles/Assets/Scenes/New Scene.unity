@@ -1070,7 +1070,7 @@ MonoBehaviour:
   moveSpeed: 5
   rotationSpeed: 500
   camXRot: 0
-  jumpForce: 40
+  jumpForce: 600
   isGrounded: 1
   cameraPivot: {fileID: 1819105775}
   groundCheckCenter: {fileID: 1188372681}
