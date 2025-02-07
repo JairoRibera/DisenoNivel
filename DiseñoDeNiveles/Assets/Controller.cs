@@ -77,15 +77,6 @@ public class Controller : MonoBehaviour
             MovePlayer();
         }
         //HandleSpeed();
-       
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded == true)
-        {
-            _rb.AddForce(Vector3.up * jumpForce);
-            //Cuando saltamos ponemos el doSound en true
-            doSound = true;
-            //Hacemos una corutina para ponerla en false cuando pase un tiempo
-            StartCoroutine(SinSonido());
-        }
         GroundCheck();
         if(canMoveandRotate == true)
         {
@@ -118,6 +109,14 @@ public class Controller : MonoBehaviour
         //float moveVertical = Input.GetAxis("Vertical");
         //Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
         //_rb.MovePosition(transform.position + movement * Time.deltaTime * moveSpeed);
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded == true)
+        {
+            _rb.AddForce(Vector3.up * jumpForce);
+            //Cuando saltamos ponemos el doSound en true
+            doSound = true;
+            //Hacemos una corutina para ponerla en false cuando pase un tiempo
+            StartCoroutine(SinSonido());
+        }
     }
     private void isRun()
     {

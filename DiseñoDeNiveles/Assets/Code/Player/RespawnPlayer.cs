@@ -30,7 +30,7 @@ public class RespawnPlayer : MonoBehaviour
         }
 
     }
-    private IEnumerator RespawnPlayerCO()
+    public IEnumerator RespawnPlayerCO()
     {
         yield return new WaitForSeconds(3);
         Player.transform.position = posInitial.transform.position;
