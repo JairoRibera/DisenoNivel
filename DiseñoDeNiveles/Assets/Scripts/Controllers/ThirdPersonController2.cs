@@ -6,13 +6,13 @@ public class ThirdPersonController2 : MonoBehaviour
 {
     public Animator miAnim;
     public float moveSpeed = 5f;
-    public float rotationSpeed = 500f;
-    //la rotacion de la camara en el eje X (parriba pabajo)
-    public float camXRot = 0f;
+    //public float rotationSpeed = 500f;
+    ////la rotacion de la camara en el eje X (parriba pabajo)
+    //public float camXRot = 0f;
     public float jumpForce = 700f;
     public bool isGrounded = true;
     //el pivote de la camara que tiene que rotar en el eje X
-    public Transform cameraPivot;
+    //public Transform cameraPivot;
 
     [Header("GROUND CHECKER")]
     public Transform groundCheckCenter;
@@ -45,7 +45,7 @@ public class ThirdPersonController2 : MonoBehaviour
         {
             moveSpeed = 5;
             MoveCharacter();
-            CameraMove();
+            //CameraMove();
         }
         else
         {
@@ -59,22 +59,22 @@ public class ThirdPersonController2 : MonoBehaviour
             }
             GroundCheck();
     }
-    public void CameraMove()
-    {
-        float _rotMouseX = Input.GetAxisRaw("Mouse X"); //Es el X y no el Y porque se cuenta el eje donde esta el mouse en fisico (y se mueve en plano)
-                                                        //Aqui el _rotMouseX va en la Y porque este va referido al juego, y el eje de rotacion entonces es la Y
-        transform.Rotate(0, _rotMouseX * rotationSpeed * Time.deltaTime, 0);
-        //el deltaTime es para que no vaya pasudpoasyjdasm
+    //public void CameraMove()
+    //{
+    //    float _rotMouseX = Input.GetAxisRaw("Mouse X"); //Es el X y no el Y porque se cuenta el eje donde esta el mouse en fisico (y se mueve en plano)
+    //                                                    //Aqui el _rotMouseX va en la Y porque este va referido al juego, y el eje de rotacion entonces es la Y
+    //    transform.Rotate(0, _rotMouseX * rotationSpeed * Time.deltaTime, 0);
+    //    //el deltaTime es para que no vaya pasudpoasyjdasm
 
-        //hay que ir acumulando el valor de la rotacion en X de la camara
-        //para que aumente o disminuya conforme movemos el raton arriba y abajo
-        camXRot -= Input.GetAxisRaw("Mouse Y") * rotationSpeed * Time.deltaTime;
-        //mathf clamp acota 2 valores para que no baje ni suba de esos valores
-        camXRot = Mathf.Clamp(camXRot, -60, 60); //el camXRot se pone porque mathf.clamp devuelve un valor, asi que para usar ese valor hay que poner que ese valor sea la rotacion 
-                                                 //asignamos la rotacion en X a los angulos del pivote de la camara. localEulerAngles es para el eje loca, el global es el eulerAngles
-        cameraPivot.localEulerAngles = new Vector3(camXRot, 0, 0);
+    //    //hay que ir acumulando el valor de la rotacion en X de la camara
+    //    //para que aumente o disminuya conforme movemos el raton arriba y abajo
+    //    camXRot -= Input.GetAxisRaw("Mouse Y") * rotationSpeed * Time.deltaTime;
+    //    //mathf clamp acota 2 valores para que no baje ni suba de esos valores
+    //    camXRot = Mathf.Clamp(camXRot, -60, 60); //el camXRot se pone porque mathf.clamp devuelve un valor, asi que para usar ese valor hay que poner que ese valor sea la rotacion 
+    //                                             //asignamos la rotacion en X a los angulos del pivote de la camara. localEulerAngles es para el eje loca, el global es el eulerAngles
+    //    cameraPivot.localEulerAngles = new Vector3(camXRot, 0, 0);
 
-    }
+    //}
     public void MoveCharacter()
     {
 
