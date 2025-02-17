@@ -6,6 +6,7 @@ public class ResetPuzzlePalanc : MonoBehaviour
 {
     public bool canInteract = false;
     public List<Palanc> palancasReset;
+    public GameObject puerta;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +22,7 @@ public class ResetPuzzlePalanc : MonoBehaviour
             {
                 palancas.Deactivate();
             }
+            puerta.SetActive(true); 
         }
     }
     private void OnTriggerEnter(Collider other)

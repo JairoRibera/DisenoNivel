@@ -9,6 +9,9 @@ TagManager:
   - Lever
   - Enemy
   - damage
+  - Ground
+  - KillZone
+  - RandomPoint
   layers:
   - Default
   - TransparentFX
@@ -23,7 +26,7 @@ TagManager:
   - Destroyable
   - Minimapa
   - Enemy
-  - 
+  - Puzzle
   - 
   - 
   - 

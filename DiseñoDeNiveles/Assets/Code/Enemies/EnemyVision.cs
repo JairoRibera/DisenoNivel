@@ -5,7 +5,8 @@ using UnityEngine.AI;
 
 public class EnemyVision : MonoBehaviour
 {
-    public GameObject HitBox;
+    [Header("Movimiento")]
+    public GameObject[] points;
     public float moveSpeed = 1;
     private GameObject player;
     public Transform Pos1;
@@ -20,21 +21,36 @@ public class EnemyVision : MonoBehaviour
     private NavMeshAgent agent;
     private Vector3 playerPosition;
     private Vector3 enemiePosition;
+    public float distanceattack;
 
     // Start is called before the first frame update
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         player = GameObject.FindWithTag("Player");
+        points = GameObject.FindGameObjectsWithTag("RandomPoint");
+        FindRandomPoint();
     }
-
     // Update is called once per frame
     void Update()
     {
         playerPosition = player.transform.position;
         enemiePosition = transform.position;
+        if(isDetected == true)
+        {
+            Vision();
+        }
+        else
+        {
+            FindRandomPoint();
+        }
 
         EnemyCheck();
+
+
+    }
+    void Vision()
+    {
         //calculamos la direccion donde esta el jugador
         Vector3 playerdirection = player.transform.position - transform.position;
         //calculamos el angulo donde mira el enemigo y la direccion del enemigo
@@ -42,7 +58,7 @@ public class EnemyVision : MonoBehaviour
         //si el angulo donde mira el enemigo es menor al angulo de de la variable float y el bool es true, entonces el enemigo se dirige a donde esta el juegador
         if (angle <= angulo * .5f && isDetected == true)
         {
-            Debug.Log("Esta en el rango");
+            //Debug.Log("Esta en el rango");
             agent.SetDestination(player.transform.position);
             //transform.LookAt(player.transform);
             //transform.position = Vector3.MoveTowards(transform.position, player.position, moveSpeed * Time.deltaTime);
@@ -51,18 +67,13 @@ public class EnemyVision : MonoBehaviour
         {
             Debug.Log("No te veo");
         }
-
     }
-    public void Attack()
+    void FindRandomPoint()
     {
-        HitBox.SetActive(true);
-        StartCoroutine(DeActivateCO());
-
-    }
-    private IEnumerator DeActivateCO()
-    {
-        yield return new WaitForSeconds(0.5f);
-        HitBox.SetActive(false);
+        //Calculamos un indice aleatorio dentro del rango del array
+        int _randomIndex = Random.Range(0, points.Length);
+        //Accedemos al elemento del array en el indice calculado, tenemos un punto aleatorio
+        agent.SetDestination(points[_randomIndex].transform.position);
     }
     void EnemyCheck()
     {

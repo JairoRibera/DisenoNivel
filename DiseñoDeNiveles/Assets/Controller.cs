@@ -172,21 +172,21 @@ public class Controller : MonoBehaviour
             if (Physics.Raycast(transform.position, enemydirection.normalized, out hit, maxDistance, Wall))
             {
                 // Si el rayo golpea algo, mostramos el nombre del objeto
-                Debug.Log("El rayo ha tocado: " + hit.collider.name);
+                //Debug.Log("El rayo ha tocado: " + hit.collider.name);
                 isLooking = false;
                 
             }
             else
             {
                 isLooking = true;
-                Debug.Log("Esta en el rango");
+                //Debug.Log("Esta en el rango");
             }
           
         }
         else
         {
             isLooking = false;
-            Debug.Log("No te veo");
+            //Debug.Log("No te veo");
 
         }
         //Debug.DrawRay(transform.position, enemydirection.normalized * maxDistance, Color.magenta);
