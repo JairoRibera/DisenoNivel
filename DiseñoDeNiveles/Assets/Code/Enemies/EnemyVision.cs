@@ -8,10 +8,12 @@ public class EnemyVision : MonoBehaviour
     [Header("Movimiento")]
     public GameObject[] points;
     public float moveSpeed = 1;
-    private GameObject player;
+    public GameObject player;
     public Transform Pos1;
     public Transform Pos2;
     public float angulo = 90f;
+    private float stopTimer = 0f;
+    public float timeStopped = 1f;
     [Header("Enemy Range")]
     public Transform enemyPoint;
     public float enemyRang = 9f;
@@ -26,8 +28,9 @@ public class EnemyVision : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        stopTimer = timeStopped;
         agent = GetComponent<NavMeshAgent>();
-        player = GameObject.FindWithTag("Player");
+        //player = GameObject.FindWithTag("Player");
         points = GameObject.FindGameObjectsWithTag("RandomPoint");
         FindRandomPoint();
     }
@@ -36,21 +39,8 @@ public class EnemyVision : MonoBehaviour
     {
         playerPosition = player.transform.position;
         enemiePosition = transform.position;
-        if(isDetected == true)
-        {
-            Vision();
-        }
-        else
-        {
-            FindRandomPoint();
-        }
-
         EnemyCheck();
 
-
-    }
-    void Vision()
-    {
         //calculamos la direccion donde esta el jugador
         Vector3 playerdirection = player.transform.position - transform.position;
         //calculamos el angulo donde mira el enemigo y la direccion del enemigo
@@ -58,15 +48,32 @@ public class EnemyVision : MonoBehaviour
         //si el angulo donde mira el enemigo es menor al angulo de de la variable float y el bool es true, entonces el enemigo se dirige a donde esta el juegador
         if (angle <= angulo * .5f && isDetected == true)
         {
-            //Debug.Log("Esta en el rango");
-            agent.SetDestination(player.transform.position);
-            //transform.LookAt(player.transform);
-            //transform.position = Vector3.MoveTowards(transform.position, player.position, moveSpeed * Time.deltaTime);
+
+            if (player != null)
+            {
+                //Debug.Log("Esta en el rango");
+                agent.SetDestination(player.transform.position);
+                //transform.LookAt(player.transform);
+                //transform.position = Vector3.MoveTowards(transform.position, player.position, moveSpeed * Time.deltaTime);
+            }
         }
         else
         {
-            Debug.Log("No te veo");
+            if (agent.remainingDistance <= 0.1 + agent.stoppingDistance)
+            {
+                stopTimer -= Time.deltaTime;
+                if(stopTimer <= 0)
+                {
+                    Debug.Log("Nuevo destino");
+                    FindRandomPoint();
+                }
+            }
         }
+
+    }
+    void Look()
+    {
+
     }
     void FindRandomPoint()
     {
@@ -82,9 +89,13 @@ public class EnemyVision : MonoBehaviour
         if (detectedCollider.Length > 0)
         {
             isDetected = true;
+            
         }
         else
+        {
             isDetected = false;
+        }
+
     }
     private void OnDrawGizmos()
     {
