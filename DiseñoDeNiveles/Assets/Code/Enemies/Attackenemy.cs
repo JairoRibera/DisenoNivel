@@ -8,9 +8,12 @@ public class Attackenemy : MonoBehaviour
     public bool Cerca = false;
     public GameObject hitBox;
     private NavMeshAgent agent;
+    public float stopTimer = 0f;
+    public float timeStopped = 1f;
     // Start is called before the first frame update
     void Start()
     {
+        stopTimer = timeStopped;
         agent = GetComponent<NavMeshAgent>();
     }
 
@@ -18,23 +21,27 @@ public class Attackenemy : MonoBehaviour
     void Update()
     {
         attack();
+        if (Cerca == true)
+        {
+            hitBox.SetActive(true);
+            stopTimer -= Time.deltaTime;
+            if (stopTimer <= 0)
+            {
+                hitBox.SetActive(false);
+            }
+            Debug.Log("Muelto");
+        }
+        stopTimer++;
     }
     public void attack()
     {
-        if(Cerca == true)
-        {
 
-            hitBox.SetActive(true);
-            StartCoroutine(DeattackCo());
-            Debug.Log("Muelto");
-        }
-        
     }
-    private IEnumerator DeattackCo()
-    {
-        yield return new WaitForSeconds(1);
-        hitBox.SetActive(false);
-    }
+    //private IEnumerator DeattackCo()
+    //{
+    //    yield return new WaitForSeconds(5);
+    //    hitBox.SetActive(false);
+    //}
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))

@@ -5,6 +5,8 @@ using UnityEngine.AI;
 
 public class EnemyVision : MonoBehaviour
 {
+    public LayerMask Wall;
+    public float maxDistance = 10;
     [Header("Movimiento")]
     public GameObject[] points;
     public float moveSpeed = 1;
@@ -52,9 +54,10 @@ public class EnemyVision : MonoBehaviour
             if (player != null)
             {
                 //Debug.Log("Esta en el rango");
-                agent.SetDestination(player.transform.position);
+                Look();
                 //transform.LookAt(player.transform);
                 //transform.position = Vector3.MoveTowards(transform.position, player.position, moveSpeed * Time.deltaTime);
+
             }
         }
         else
@@ -73,7 +76,21 @@ public class EnemyVision : MonoBehaviour
     }
     void Look()
     {
+        Vector3 playerdirection = playerPosition - transform.position;
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, playerdirection.normalized, out hit, maxDistance, Wall))
+        {
+            // Si el rayo golpea algo, mostramos el nombre del objeto
+            //Debug.Log("El rayo ha tocado: " + hit.collider.name);
+            isDetected = false;
 
+        }
+        else
+        {
+            agent.SetDestination(player.transform.position);
+            //Debug.Log("Esta en el rango");
+        }
+        Debug.DrawRay(transform.position, playerdirection.normalized);  
     }
     void FindRandomPoint()
     {
