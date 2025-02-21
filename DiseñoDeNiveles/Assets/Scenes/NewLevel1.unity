@@ -1402,6 +1402,7 @@ MonoBehaviour:
   hitBox: {fileID: 1680187726}
   stopTimer: 0
   timeStopped: 1
+  canattack: 0
 --- !u!65 &1926330477
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1526,7 +1527,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9192034380188586352, guid: 8c89e923bf3a82a408216a8a9c41289d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 15.53
+      value: 4.77
       objectReference: {fileID: 0}
     - target: {fileID: 9192034380188586352, guid: 8c89e923bf3a82a408216a8a9c41289d, type: 3}
       propertyPath: m_LocalRotation.w

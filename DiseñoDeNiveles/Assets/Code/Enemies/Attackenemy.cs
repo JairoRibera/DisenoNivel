@@ -10,6 +10,8 @@ public class Attackenemy : MonoBehaviour
     private NavMeshAgent agent;
     public float stopTimer = 0f;
     public float timeStopped = 1f;
+    public bool canattack = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,31 +23,37 @@ public class Attackenemy : MonoBehaviour
     void Update()
     {
         attack();
-        if (Cerca == true)
+
+    }
+    void attack()
+    {
+        if (Cerca == true && canattack == true)
         {
             hitBox.SetActive(true);
             stopTimer -= Time.deltaTime;
             if (stopTimer <= 0)
             {
+                Debug.Log("añlsdgjasñlgjas´dghasdh");
                 hitBox.SetActive(false);
             }
-            Debug.Log("Muelto");
+            //stopTimer = timeStopped;
+            //StartCoroutine(DeattackCo());
+            //Debug.Log("Muelto");
+            //canattack = false;
         }
-        stopTimer++;
-    }
-    public void attack()
-    {
-
     }
     //private IEnumerator DeattackCo()
     //{
-    //    yield return new WaitForSeconds(5);
+    //    yield return new WaitForSeconds(1);
     //    hitBox.SetActive(false);
+    //    canattack = false;
+    //    Debug.Log("doñlagjds");
     //}
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
+            canattack = true;
             Cerca = true;
             agent.isStopped = false;
         }
@@ -56,6 +64,8 @@ public class Attackenemy : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Cerca = false;
+            canattack = false;
+
         }
     }
 }

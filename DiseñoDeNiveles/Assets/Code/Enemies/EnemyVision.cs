@@ -10,7 +10,7 @@ public class EnemyVision : MonoBehaviour
     [Header("Movimiento")]
     public GameObject[] points;
     public float moveSpeed = 1;
-    public GameObject player;
+    private GameObject player;
     public Transform Pos1;
     public Transform Pos2;
     public float angulo = 90f;
@@ -32,7 +32,7 @@ public class EnemyVision : MonoBehaviour
     {
         stopTimer = timeStopped;
         agent = GetComponent<NavMeshAgent>();
-        //player = GameObject.FindWithTag("Player");
+        player = GameObject.FindWithTag("Player");
         points = GameObject.FindGameObjectsWithTag("RandomPoint");
         FindRandomPoint();
     }
@@ -83,7 +83,6 @@ public class EnemyVision : MonoBehaviour
             // Si el rayo golpea algo, mostramos el nombre del objeto
             //Debug.Log("El rayo ha tocado: " + hit.collider.name);
             isDetected = false;
-
         }
         else
         {
@@ -106,7 +105,6 @@ public class EnemyVision : MonoBehaviour
         if (detectedCollider.Length > 0)
         {
             isDetected = true;
-            
         }
         else
         {
