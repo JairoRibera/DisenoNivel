@@ -11,6 +11,7 @@ public class Attackenemy : MonoBehaviour
     public float stopTimer = 0f;
     public float timeStopped = 1f;
     public bool canattack = false;
+    public float attackCounter = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -29,7 +30,9 @@ public class Attackenemy : MonoBehaviour
     {
         if (Cerca == true && canattack == true)
         {
+
             hitBox.SetActive(true);
+            attackCounter = attackCounter - 1;
             stopTimer -= Time.deltaTime;
             if (stopTimer <= 0)
             {
