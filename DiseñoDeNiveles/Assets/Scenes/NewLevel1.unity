@@ -1463,6 +1463,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 726870064}
+    - target: {fileID: 122762828311681160, guid: 8c89e923bf3a82a408216a8a9c41289d, type: 3}
+      propertyPath: points.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 730602820775510788, guid: 8c89e923bf3a82a408216a8a9c41289d, type: 3}
       propertyPath: m_Name
       value: EnemyVision
