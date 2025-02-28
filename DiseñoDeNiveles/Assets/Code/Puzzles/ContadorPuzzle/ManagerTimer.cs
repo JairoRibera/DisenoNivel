@@ -43,7 +43,7 @@ public class ManagerTimer : MonoBehaviour
                 //Desactivamos el contador y ponemos el texto de muerte
                 Contador.SetActive(false);
                 TextoDie();
-                RPreference.RespawnthePlayer();
+                //RPreference.RespawnthePlayer();
             }
         }
        
