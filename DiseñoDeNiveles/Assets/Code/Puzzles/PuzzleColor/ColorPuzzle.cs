@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ColorPuzzle : MonoBehaviour
 {
-    public GameObject panel1, panel2;
+    public GameObject panel1, panel2, panel3;
     public ColorArea[] areas;
     public GameObject obstacle;
 
@@ -27,6 +27,7 @@ public class ColorPuzzle : MonoBehaviour
             obstacle.SetActive(false);
             Destroy(panel1);
             Destroy(panel2);
+            Destroy(panel3);
         }
     }
 }
