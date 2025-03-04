@@ -8,6 +8,11 @@ public class MenuPausa : MonoBehaviour
     public GameObject pauseMenu;
     public GameObject optionMenu;
     public bool isPaused;
+    private Controller player;
+    private void Start()
+    {
+        player = GameObject.FindWithTag("Player").GetComponent<Controller>();
+    }
     // Update is called once per frame
     void Update()
     {
@@ -30,6 +35,7 @@ public class MenuPausa : MonoBehaviour
             isPaused = true;
             pauseMenu.SetActive(true);
             Time.timeScale = 0f;
+            player.jumpForce = 0f;
         }
     }
     public void ResumeGame()
@@ -37,6 +43,7 @@ public class MenuPausa : MonoBehaviour
         pauseMenu.SetActive(false);
         Time.timeScale = 1f;
         isPaused = false;
+        player.jumpForce = 300f;
     }
     public void ShowOMMenu()
     {
