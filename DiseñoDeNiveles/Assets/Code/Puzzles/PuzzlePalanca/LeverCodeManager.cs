@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class LeverCodeManager : MonoBehaviour
 {
-    public GameObject puerta;
-    public Palanc[] palancas = new Palanc[4];
-    private Palanc lever;
+    //public GameObject puerta;
+    public PalancaPuzzleFInal[] palancas = new PalancaPuzzleFInal[4];
+    private PalancaPuzzleFInal lever;
     public bool estanactivas = false;
+    public GameObject caja;
     // Start is called before the first frame update
     void Start()
     {
-        lever = GameObject.FindWithTag("Lever").GetComponent<Palanc>();
+        lever = GameObject.FindWithTag("Lever").GetComponent<PalancaPuzzleFInal>();
     }
 
     // Update is called once per frame
@@ -36,7 +37,8 @@ public class LeverCodeManager : MonoBehaviour
         if (_correctPalanca == palancas.Length)
         {
             //si se cumple, se ha completado el puzzle correctamente :)
-            puerta.SetActive(false);
+            //puerta.SetActive(false);
+            caja.SetActive(true);
         }
     }
     public void DesactivarPalancas()

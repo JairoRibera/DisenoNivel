@@ -7,7 +7,7 @@ public class ColorPuzzle : MonoBehaviour
     public GameObject panel1, panel2, panel3;
     public ColorArea[] areas;
     public GameObject obstacle;
-
+    public GameObject enemy;
     void Update()
     {
         //para contar cuantas areas estan correctas
@@ -28,6 +28,7 @@ public class ColorPuzzle : MonoBehaviour
             Destroy(panel1);
             Destroy(panel2);
             Destroy(panel3);
+            enemy.SetActive(true);
         }
     }
 }

@@ -19,6 +19,12 @@ public class CodigoPuerta : MonoBehaviour
             Panel.SetActive(false);
             CoReference.canMoveandRotate = false;
         }
+        if(Input.GetKeyDown(KeyCode.F) && Cerca == true)
+        {
+            PanelCodigo.SetActive(false);
+            Panel.SetActive(true);
+            CoReference.canMoveandRotate = true;
+        }
     }
     private void OnTriggerEnter(Collider other)
     {
