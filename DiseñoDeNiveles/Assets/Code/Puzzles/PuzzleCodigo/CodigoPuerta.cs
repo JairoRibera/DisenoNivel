@@ -10,6 +10,7 @@ public class CodigoPuerta : MonoBehaviour
     public PuzzleCodigoManager CM;
     public bool Cerca;
     public Controller CoReference;
+    public bool panelactive = false;
     // Update is called once per frame
     void Update()
     {
@@ -18,12 +19,14 @@ public class CodigoPuerta : MonoBehaviour
             PanelCodigo.SetActive(true);
             Panel.SetActive(false);
             CoReference.canMoveandRotate = false;
+            panelactive = true;
         }
-        if(Input.GetKeyDown(KeyCode.F) && Cerca == true)
+        if(Input.GetKeyDown(KeyCode.Escape) && Cerca == true && panelactive == true)
         {
             PanelCodigo.SetActive(false);
             Panel.SetActive(true);
             CoReference.canMoveandRotate = true;
+            panelactive = false;
         }
     }
     private void OnTriggerEnter(Collider other)

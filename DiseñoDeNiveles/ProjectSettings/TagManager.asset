@@ -12,6 +12,7 @@ TagManager:
   - Ground
   - KillZone
   - RandomPoint
+  - PuertaCode
   layers:
   - Default
   - TransparentFX

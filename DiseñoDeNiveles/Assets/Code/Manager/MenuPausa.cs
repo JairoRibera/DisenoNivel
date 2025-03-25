@@ -9,16 +9,19 @@ public class MenuPausa : MonoBehaviour
     public GameObject optionMenu;
     public bool isPaused;
     private Controller player;
+    private CodigoPuerta codigoPuerta;
     private void Start()
     {
         player = GameObject.FindWithTag("Player").GetComponent<Controller>();
+        codigoPuerta = GameObject.FindWithTag("PuertaCode").GetComponent<CodigoPuerta>();
     }
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && codigoPuerta.panelactive == false)
         {
-            PauseGame();
+
+                PauseGame();
         }
     }
     public void PauseGame()
