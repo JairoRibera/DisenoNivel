@@ -29,6 +29,13 @@ public class CodigoPuerta : MonoBehaviour
             panelactive = false;
         }
     }
+    public void QuitarPanel()
+    {
+        PanelCodigo.SetActive(false);
+        Panel.SetActive(true);
+        CoReference.canMoveandRotate = true;
+        panelactive = false;
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
