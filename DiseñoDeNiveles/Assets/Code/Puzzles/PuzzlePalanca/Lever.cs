@@ -5,12 +5,13 @@ using UnityEngine;
 public class Lever : MonoBehaviour
 {
     private Animator animPalanca;
-    public List<Lever> palancas;
-    public List<Lever> palancasdesactivar;
-
+    //public List<Lever> palancas;
+    //public List<Lever> palancasdesactivar;
+    public bool active = false;
     public bool isActive;
     public bool canInteract;
     private LeverCodeManager _pCM;
+    public Palanc[] palancs;
     private void Start()
     {
         _pCM = FindAnyObjectByType<LeverCodeManager>();
@@ -18,47 +19,93 @@ public class Lever : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && canInteract == true)
+        if (Input.GetKeyDown(KeyCode.E) && canInteract)
         {
-            //isActive = true;
-            //animPalanca.SetBool("LeverUp", true);
-            if (isActive == true)
+            Debug.Log("Que passa " + gameObject.name, gameObject);
+            if (active == true)
             {
-                desactivar();
+                Deactivate();
+                foreach (Palanc pal in palancs)
+                {
+                    if (pal.active == true)
+                    {
+                        pal.Deactivate();
+                    }
+                    else
+                    {
+                        pal.Activate();
+                    }
+                }
             }
             else
-                activar();
-
-        }
-
-    }
-    public void desactivar()
-    {
-        if (!isActive) return; //Evitar desactivar si ya esta desactivada
-        isActive = false;
-        animPalanca.SetBool("LeverUp", false);
-        foreach (var palanca in palancas)
-        {
-            if (palanca != null && palanca.isActive)  // Solo desactivar palancas que están activas
             {
-                palanca.desactivar();
+                Activate();
+                foreach (Palanc pal in palancs)
+                {
+                    if (pal.active == true)
+                    {
+                        pal.Deactivate();
+                    }
+                    else
+                    {
+                        pal.Activate();
+                    }
+                }
             }
+
         }
+        //if (Input.GetKeyDown(KeyCode.E) && canInteract == true)
+        //{
+        //    //isActive = true;
+        //    //animPalanca.SetBool("LeverUp", true);
+        //    if (isActive == true)
+        //    {
+        //        desactivar();
+        //    }
+        //    else
+        //        activar();
+
+        //}
+
     }
-    public void activar()
+    public void Activate()
     {
-        if (isActive) return; // Evitar activar si ya está activa
-        isActive = true;
-        Debug.Log("mea ctivo " + gameObject);
+        active = true;
         animPalanca.SetBool("LeverUp", true);
-        foreach (var palanca in palancas)
-        {
-            if (palanca != null && !palanca.isActive)  // Solo activar palancas que no están activas
-            {
-                palanca.activar();
-            }
-        }
     }
+
+    public void Deactivate()
+    {
+        active = false;
+        animPalanca.SetBool("LeverUp", false);
+    }
+    //public void desactivar()
+    //{
+    //    if (!isActive) return; //Evitar desactivar si ya esta desactivada
+    //    isActive = false;
+    //    animPalanca.SetBool("LeverUp", false);
+    //    foreach (var palanca in palancas)
+    //    {
+    //        if (palanca != null && palanca.isActive)  // Solo desactivar palancas que están activas
+    //        {
+    //            palanca.desactivar();
+    //        }
+    //    }
+    //}
+    //public void activar()
+    //{
+    //    if (isActive) return; // Evitar activar si ya está activa
+    //    isActive = true;
+    //    Debug.Log("mea ctivo " + gameObject);
+    //    animPalanca.SetBool("LeverUp", true);
+    //    foreach (var palanca in palancas)
+    //    {
+    //        if (palanca != null && !palanca.isActive)  // Solo activar palancas que no están activas
+    //        {
+    //            palanca.activar();
+    //        }
+    //    }
+    //}
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
