@@ -11,7 +11,7 @@ public class Lever : MonoBehaviour
     public bool isActive;
     public bool canInteract;
     private LeverCodeManager _pCM;
-    public Palanc[] palancs;
+    public Lever[] palancs;
     private void Start()
     {
         _pCM = FindAnyObjectByType<LeverCodeManager>();
@@ -25,7 +25,7 @@ public class Lever : MonoBehaviour
             if (active == true)
             {
                 Deactivate();
-                foreach (Palanc pal in palancs)
+                foreach (Lever pal in palancs)
                 {
                     if (pal.active == true)
                     {
@@ -40,7 +40,7 @@ public class Lever : MonoBehaviour
             else
             {
                 Activate();
-                foreach (Palanc pal in palancs)
+                foreach (Lever pal in palancs)
                 {
                     if (pal.active == true)
                     {
