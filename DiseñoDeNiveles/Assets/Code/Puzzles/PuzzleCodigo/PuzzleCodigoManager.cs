@@ -16,6 +16,7 @@ public class PuzzleCodigoManager : MonoBehaviour
     public GameObject Puerta;
     public Text TextoCo;
     public Controller CoReference;
+    public Animator anim;
     public void AddNumber(int numero)
     {
         playlist.Add(numero);
@@ -24,8 +25,9 @@ public class PuzzleCodigoManager : MonoBehaviour
         {
             if (truelist.SequenceEqual(playlist))
             {
+                anim.SetBool("IsComplete", true);
                 PanelCodigo.SetActive(false);
-                Puerta.SetActive(false);
+                //Puerta.SetActive(false);
                 playlist.Clear();
                 Cursor.visible = false;
                 Cursor.lockState = CursorLockMode.Locked;

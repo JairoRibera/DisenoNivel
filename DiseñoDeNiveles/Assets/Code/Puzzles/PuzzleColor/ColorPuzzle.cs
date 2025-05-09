@@ -6,8 +6,10 @@ public class ColorPuzzle : MonoBehaviour
 {
     public GameObject panel1, panel2, panel3;
     public ColorArea[] areas;
-    public GameObject obstacle;
+    public GameObject peluche;
     public GameObject enemy;
+    public Animator enemyAnim;
+    public Animator anim;
     void Update()
     {
         //para contar cuantas areas estan correctas
@@ -24,11 +26,14 @@ public class ColorPuzzle : MonoBehaviour
         if (_correctAreas == areas.Length)
         {
             //si se cumple, se ha completado el puzzle correctamente :)
-            obstacle.SetActive(false);
+            //obstacle.SetActive(false);
+            peluche.SetActive(true);
             Destroy(panel1);
             Destroy(panel2);
             Destroy(panel3);
             enemy.SetActive(true);
+            
+            anim.SetBool("IsComplete", true);
         }
     }
 }

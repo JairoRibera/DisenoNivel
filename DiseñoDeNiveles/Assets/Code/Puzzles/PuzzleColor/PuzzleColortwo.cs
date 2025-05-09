@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class PuzzleColortwo : MonoBehaviour
 {
+    public Animator anim;
     public ColorArea[] areas;
     public GameObject obstacle;
+    public bool isComplete = false;
     // Update is called once per frame
     void Update()
     {
@@ -22,8 +24,11 @@ public class PuzzleColortwo : MonoBehaviour
         //comprobar si hay tantas areas correctas como elementos dentro del array de areaas
         if (_correctAreas == areas.Length)
         {
-            //si se cumple, se ha completado el puzzle correctamente :)
-            obstacle.SetActive(false);
+            ////si se cumple, se ha completado el puzzle correctamente :)
+            //obstacle.SetActive(false);
+            anim.SetBool("IsComplete", true);
+
+            
         }
     }
 }
